@@ -123,7 +123,9 @@ export const RFFCFormSwitch = ({
         >
           <div className={className}>
             <CFormSwitch
-              {...input}
+              onChange={input.onChange}
+              checked={input.checked}
+              value={input.value}
               // @todo revisit this, only shows green when checked
               valid={!meta.error && meta.touched && validate}
               invalid={meta.error && meta.touched && validate}
@@ -265,7 +267,9 @@ export const RFFCFormRadio = ({
       {({ meta, input }) => (
         <div className={className}>
           <CFormCheck
-            {...input}
+            onChange={input.onChange}
+            checked={input.checked}
+            value={input.value}
             valid={!meta.error && meta.touched}
             invalid={meta.error && meta.touched}
             disabled={disabled}
@@ -283,6 +287,47 @@ export const RFFCFormRadio = ({
 
 RFFCFormRadio.propTypes = {
   ...sharedPropTypes,
+}
+
+export const RFFCFormRadioList = ({
+  name,
+  options,
+  className = 'mb-3',
+  onClick,
+  inline = false,
+}) => {
+  return (
+    <>
+      <div className={className}>
+        {options?.map((option, key) => {
+          return (
+            <Field name={name} type="radio" value={option.value} key={key}>
+              {({ input }) => {
+                return (
+                  <>
+                    <CFormCheck
+                      name={input.name}
+                      checked={input.checked}
+                      onChange={input.onChange}
+                      type="radio"
+                      {...option}
+                      onClick={onClick}
+                      inline={inline}
+                    />
+                  </>
+                )
+              }}
+            </Field>
+          )
+        })}
+      </div>
+    </>
+  )
+}
+
+RFFCFormRadioList.propTypes = {
+  ...sharedPropTypes,
+  inline: PropTypes.bool,
 }
 
 export const RFFCFormTextarea = ({
@@ -542,7 +587,11 @@ export const RFFSelectSearch = ({
                 {...props}
               />
             )}
-            {meta.error && meta.touched && <span className="text-danger">{meta.error}</span>}
+            {meta.error && meta.touched && (
+              <span className="text-danger">
+                {typeof meta.error === 'object' ? Object.values(meta.error).join('') : meta.error}
+              </span>
+            )}
           </div>
         )
       }}
