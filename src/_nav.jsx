@@ -47,6 +47,11 @@ const _nav = [
       },
       {
         component: CNavItem,
+        name: 'Risky Users',
+        to: '/identity/administration/risky-users',
+      },
+      {
+        component: CNavItem,
         name: 'Groups',
         to: '/identity/administration/groups',
       },
@@ -78,7 +83,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'JIT Admin',
-        to: '/identity/administration/users/jit-admin',
+        to: '/identity/administration/jit-admin',
       },
       {
         component: CNavItem,
@@ -113,6 +118,11 @@ const _nav = [
         component: CNavItem,
         name: 'AAD Connect Report',
         to: '/identity/reports/azure-ad-connect-report',
+      },
+      {
+        component: CNavItem,
+        name: 'Risk Detections',
+        to: '/identity/reports/risk-detections',
       },
     ],
   },
@@ -151,6 +161,11 @@ const _nav = [
         component: CNavItem,
         name: 'App Consent Requests',
         to: '/tenant/administration/app-consent-requests',
+      },
+      {
+        component: CNavItem,
+        name: 'Authentication Methods',
+        to: '/tenant/administration/authentication-methods',
       },
       {
         component: CNavItem,
@@ -597,6 +612,11 @@ const _nav = [
         component: CNavItem,
         name: 'Mailboxes',
         to: '/email/administration/mailboxes',
+      },
+      {
+        component: CNavItem,
+        name: 'Deleted Mailboxes',
+        to: '/email/administration/deleted-mailboxes',
       },
       {
         component: CNavItem,
